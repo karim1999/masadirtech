@@ -5,29 +5,29 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link rel="icon" type="image/png" href="@if(session('language')=="ar")
-      {{$api['site_profile']->icon_ar}} 
+      {{$api['site_profile']->icon_ar}}
       @else
       {{$api['site_profile']->icon_en}}
-      @endif 
+      @endif
       " />
 
 
     <meta name="description" content="
     @if(session('language')=="ar")
-      {{$api['site_profile']->site_description_ar}} 
+      {{$api['site_profile']->site_description_ar}}
       @else
       {{$api['site_profile']->site_description_en}}
-      @endif 
+      @endif
     ">
-    
+
     <title>
       @if(session('language')=="ar")
-      {{$api['site_profile']->site_name_ar}} | {{$api['site_profile']->site_sub_name_ar}} 
+      {{$api['site_profile']->site_name_ar}} | {{$api['site_profile']->site_sub_name_ar}}
       @else
       {{$api['site_profile']->site_name_en}} | {{$api['site_profile']->site_sub_name_en}}
-      @endif 
+      @endif
     </title>
     {!!$api['site_profile']->google_analytics!!}
 
@@ -40,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="https://nafezly.com/css/fontawsome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{env('PUBLIC_PATH')}}/css/switcher.css">
-   
+
     <style type="text/css">
 
         @font-face {
@@ -50,7 +50,7 @@
       font-style: normal;
     }
 
-    
+
     	*{
     		font-family: 'NeoSansArabic', sans-serif;
     		text-decoration: none!important;
@@ -75,7 +75,7 @@
           --border-c:#ededed;
 
         }
-        @else 
+        @else
         html {
           --color-1: #1c222b;
           --color-2: #131923;
@@ -88,8 +88,8 @@
         @endif
 
 
-   
-     
+
+
 
 
         body{
@@ -232,7 +232,7 @@
     @endif
 
     .twitter a,.twitter span ,.twitter p{
-        
+
         display: block;
         font-weight: normal!important;
         line-height: 1.6!important;
@@ -253,7 +253,7 @@
         display: inline-block;
     }
     .twitter *{
-       text-align: justify!important; 
+       text-align: justify!important;
     }
     .twitter .invisible,.twitter .tco-ellipsis,.twitter .tco-ellipsis{
         display: none;
@@ -272,16 +272,16 @@
   /*box-shadow: inset 0 0 5px grey; */
   border-radius: 10px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #666; 
+  background: #666;
 }
   .container-fluid{
     padding: 0px
@@ -294,25 +294,25 @@
 
     <div class="col-12">
   @if(session('language')=="ar" && session('popup_status')!="false" && $api['advs']->popup_status==1)
-  {!!$api['advs']->popup_ar!!} 
+  {!!$api['advs']->popup_ar!!}
   @elseif(session('popup_status')!="false" && $api['advs']->popup_status==1)
   {!!$api['advs']->popup_en!!}
-  @endif  
+  @endif
 </div>
 
 <div class="col-12">
-  @if(session('language')=="ar" && session('header_status')!="false" && $api['advs']->header_status==1)
-  {!!$api['advs']->header_ar!!} 
-  @elseif(session('header_status')!="false" && $api['advs']->header_status==1)
-  {!!$api['advs']->header_en!!}
-  @endif  
+      @if(session('language')=="ar" && session('header_status')!="false" && $api['advs']->header_status==1)
+          {!!preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1">$1</a>', $api['advs']->header_ar)!!}
+      @elseif(session('header_status')!="false" && $api['advs']->header_status==1)
+          {!!preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1">$1</a>', $api['advs']->header_en)!!}
+      @endif
 </div>
 
 
 
-    @yield('content') 
+    @yield('content')
 
- 
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
@@ -337,11 +337,11 @@ window.onscroll = function() {
 }
 </script>
 
- 
+
 
 
 <script type="text/javascript">
-    
+
     $('#inlineCheckbox1').on('click',function(){
 
     if($('body').hasClass('night'))
@@ -364,7 +364,7 @@ window.onscroll = function() {
           url: "{{route('switch_site_mode')}}"
         })
           .done(function( msg ) { });
-   
+
     }
     else{
         $('html').get(0).style.setProperty('--color-1', '#fff');
@@ -395,10 +395,10 @@ window.onscroll = function() {
 
 
 @if(session('language')=="ar" && $api['footer']->footer_ar_enabled==1)
-{!!$api['footer']->footer_ar!!} 
+{!!$api['footer']->footer_ar!!}
 @elseif($api['footer']->footer_en_enabled==1)
 {!!$api['footer']->footer_en!!}
-@endif 
+@endif
 
 
 
