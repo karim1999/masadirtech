@@ -300,13 +300,6 @@
   @endif
 </div>
 
-<div class="col-12">
-      @if(session('language')=="ar" && session('header_status')!="false" && $api['advs']->header_status==1)
-          {!!preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1">$1</a>', $api['advs']->header_ar)!!}
-      @elseif(session('header_status')!="false" && $api['advs']->header_status==1)
-          {!!preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1">$1</a>', $api['advs']->header_en)!!}
-      @endif
-</div>
 
 
 

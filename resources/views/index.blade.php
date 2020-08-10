@@ -8,9 +8,22 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light  border-bottom  fixed-top" style="background: var(--color-1)!important;position: fixed; /* Make it stick/fixed */
   top: 0; /* Stay on top */
   width: 100%; /* Full width */
-  transition: top 0.3s;  " id="navbar">
-    <div class="container-fluid">
-
+  transition: top 0.3s;
+padding-right: 0;" id="navbar">
+        @if(session('language')=="ar" && session('header_status')!="false" && $api['advs']->header_status==1)
+            <div class="col-12 px-0"
+                 style="position: absolute; top: 0; background-color: #EB593C; color: white; text-align: center; padding: 5px; direction: rtl; z-index: 23432423">
+                {!!preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1">$1</a>', $api['advs']->header_ar)!!}
+            </div>
+        @elseif(session('header_status')!="false" && $api['advs']->header_status==1)
+            <div class="col-12 px-0"
+                 style="position: absolute; top: 0; background-color: #EB593C; color: white; text-align: center; padding: 5px; direction: ltr; z-index: 23432423">
+                {!!preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1">$1</a>', $api['advs']->header_en)!!}
+            </div>
+        @endif
+            <div class="container-fluid"
+                 style="{{(session('header_status')!="false" && $api['advs']->header_status==1) ? "margin-top: 25px" : ''}}"
+            >
 
   <a class="navbar-brand" href="#">
     <img src="
@@ -97,29 +110,29 @@
 
 </div>
   @if(session('header_status')!="false" && $api['advs']->header_status==1)
-<div class="container-fluid mb-4 mt-5" style="padding: 20px 8%;width: 1200px;max-width: 100%">
-    <div class="col-12 px-0 border" style="padding: 10px;background: var(--color-1); border-radius: 2px;margin: 0px auto;" id="adv">
-        <div class="col-12 row" style="padding: 0px 5px;">
-            <div class="col-10" style="height: 38px;padding: 5px 10px">
-                <h6 style="color: var(--color-5) ;font-size: 15px;" class="
-                text-right
-                 "> @lang('index.annonce')                     </h6>
-            </div>
-            <div class="col-2
-                text-left
-            " style="height: 38px;padding: 0px 10px;position: relative;z-index: 1">
-                <span class="fa fa-times" style="color: var(--color-2);background: var(--color-5);padding: 5px 7px;border-radius: 50%;font-size: 10px;margin-top: 6px;cursor: pointer;z-index: 1;position: relative;display: inline-block;" onclick="$('#adv').slideUp();"></span>
-            </div>
-            <p style="color: var(--color-5);text-align: justify;padding: 5px 5px;position: relative;z-index: 1;font-size: 14px" class="px-3">
-                @if(session('language')=="ar")
-                {!!$api['advs']->header_ar!!}
-                @else
-                {!!$api['advs']->header_en!!}
-                @endif
-            </p>
-        </div>
-    </div>
-</div>
+{{--<div class="container-fluid mb-4 mt-5" style="padding: 20px 8%;width: 1200px;max-width: 100%">--}}
+{{--    <div class="col-12 px-0 border" style="padding: 10px;background: var(--color-1); border-radius: 2px;margin: 0px auto;" id="adv">--}}
+{{--        <div class="col-12 row" style="padding: 0px 5px;">--}}
+{{--            <div class="col-10" style="height: 38px;padding: 5px 10px">--}}
+{{--                <h6 style="color: var(--color-5) ;font-size: 15px;" class="--}}
+{{--                text-right--}}
+{{--                 "> @lang('index.annonce')                     </h6>--}}
+{{--            </div>--}}
+{{--            <div class="col-2--}}
+{{--                text-left--}}
+{{--            " style="height: 38px;padding: 0px 10px;position: relative;z-index: 1">--}}
+{{--                <span class="fa fa-times" style="color: var(--color-2);background: var(--color-5);padding: 5px 7px;border-radius: 50%;font-size: 10px;margin-top: 6px;cursor: pointer;z-index: 1;position: relative;display: inline-block;" onclick="$('#adv').slideUp();"></span>--}}
+{{--            </div>--}}
+{{--            <p style="color: var(--color-5);text-align: justify;padding: 5px 5px;position: relative;z-index: 1;font-size: 14px" class="px-3">--}}
+{{--                @if(session('language')=="ar")--}}
+{{--                {!!$api['advs']->header_ar!!}--}}
+{{--                @else--}}
+{{--                {!!$api['advs']->header_en!!}--}}
+{{--                @endif--}}
+{{--            </p>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
  @endif
 
 {{-- <div class="col-12 mt-5" id="company">
